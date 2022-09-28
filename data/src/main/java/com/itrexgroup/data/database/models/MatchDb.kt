@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 class MatchDb(
     @PrimaryKey
     val id: String,
-    val playerOneId: String,
+    val playerOneName: String,
     val playerOneScore: Int,
-    val playerTwoId: String,
+    val playerTwoName: String,
     val playerTwoScore: Int
 )

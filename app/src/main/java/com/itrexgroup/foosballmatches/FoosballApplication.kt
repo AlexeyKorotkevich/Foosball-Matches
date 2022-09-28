@@ -1,7 +1,7 @@
 package com.itrexgroup.foosballmatches
 
-import android.app.Activity
 import android.app.Application
+import androidx.fragment.app.Fragment
 import com.itrexgroup.foosballmatches.di.AppComponent
 import com.itrexgroup.foosballmatches.di.DaggerAppComponent
 
@@ -16,4 +16,4 @@ class FoosballApplication : Application() {
     }
 }
 
-val Activity.appComponent get() = (this.application as FoosballApplication).appComponent
+val Fragment.appComponent get() = (this.requireActivity().application as FoosballApplication).appComponent

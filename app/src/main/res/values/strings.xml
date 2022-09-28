@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Foosball Matches</string>
+    <string name="add_match">add_match</string>
+    <string name="player_one_name">Player one name</string>
+    <string name="vs">VS</string>
+    <string name="save">Save</string>
+    <string name="ranks">Ranks</string>
+    <string name="sort_by_games">Sort by games</string>
 </resources>

@@ -2,8 +2,8 @@ package com.itrexgroup.domain.dto
 
 data class MatchDto(
     val id: String,
-    val playerOneId: String,
+    val playerOneName: String,
     val playerOneScore: Int,
-    val playerTwoId: String,
+    val playerTwoName: String,
     val playerTwoScore: Int
 )
