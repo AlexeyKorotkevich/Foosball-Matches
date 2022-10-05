@@ -24,7 +24,7 @@ class MatchListFragment : BaseFragment() {
 
     private lateinit var viewModel: MatchListViewModel
     private lateinit var binding: FragmentMatchListBinding
-    private lateinit var matchListAdapter: MatchListAdapter
+    private val matchListAdapter = MatchListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,15 +41,25 @@ class MatchListFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun observeData() {
+        compositeDisposable.add(
+            viewModel.matchList.subscribe { list ->
+                matchListAdapter.repopulate(list)
+            }
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setMenuFunctionality()
-
         binding = FragmentMatchListBinding.bind(view)
-        binding.matchRecyclerView.layoutManager = LinearLayoutManager(context)
-        matchListAdapter = MatchListAdapter()
+        setTitle(getString(R.string.match_list_title))
+        setRecyclerAdapter()
+        setMenuFunctionality()
+        setFloatingButtonFunctionality()
+    }
 
+    private fun setRecyclerAdapter() {
+        binding.matchRecyclerView.layoutManager = LinearLayoutManager(context)
         matchListAdapter.setItemClick { item ->
             val editMatchDialog = EditMatchDialogFragment.getInstance(
                 matchId = item.id,
@@ -63,43 +73,12 @@ class MatchListFragment : BaseFragment() {
                 EditMatchDialogFragment.TAG
             )
         }
-
         matchListAdapter.setLongClick { item ->
             showDeleteMatchAlertDialog(onDeleteDialog = {
                 viewModel.deleteMatch(item.id)
             })
         }
         binding.matchRecyclerView.adapter = matchListAdapter
-
-        binding.fbAddMatch.setOnClickListener {
-            val editMatchDialog = EditMatchDialogFragment.getInstance()
-            editMatchDialog.show(
-                requireActivity().supportFragmentManager,
-                EditMatchDialogFragment.TAG
-            )
-        }
-
-        compositeDisposable.add(
-            viewModel.matchList.subscribe { list ->
-                matchListAdapter.repopulate(list)
-            }
-        )
-    }
-
-    private fun showDeleteMatchAlertDialog(
-        onDeleteDialog: () -> Unit
-    ) {
-        val alertDialog = AlertDialog.Builder(requireContext()).create()
-        alertDialog.setTitle("Delete match")
-        alertDialog.setMessage("Are you sure you want to delete this match?")
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes") { dialog, _ ->
-            onDeleteDialog.invoke()
-            dialog.dismiss()
-        }
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No") { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.show()
     }
 
     private fun setMenuFunctionality() {
@@ -121,5 +100,31 @@ class MatchListFragment : BaseFragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun setFloatingButtonFunctionality() {
+        binding.fbAddMatch.setOnClickListener {
+            val editMatchDialog = EditMatchDialogFragment.getInstance()
+            editMatchDialog.show(
+                requireActivity().supportFragmentManager,
+                EditMatchDialogFragment.TAG
+            )
+        }
+    }
+
+    private fun showDeleteMatchAlertDialog(
+        onDeleteDialog: () -> Unit
+    ) {
+        val alertDialog = AlertDialog.Builder(requireContext()).create()
+        alertDialog.setTitle("Delete match")
+        alertDialog.setMessage("Are you sure you want to delete this match?")
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes") { dialog, _ ->
+            onDeleteDialog.invoke()
+            dialog.dismiss()
+        }
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.show()
     }
 }

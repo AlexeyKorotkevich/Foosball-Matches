@@ -1,12 +1,12 @@
 package com.itrexgroup.foosballmatches
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.itrexgroup.foosballmatches.base.BaseActivity
 import com.itrexgroup.foosballmatches.databinding.MainActivityBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: MainActivityBinding

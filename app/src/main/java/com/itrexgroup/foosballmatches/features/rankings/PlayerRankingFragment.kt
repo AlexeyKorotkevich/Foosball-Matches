@@ -22,7 +22,7 @@ class PlayerRankingFragment : BaseFragment() {
 
     private lateinit var viewModel: PlayerRankingViewModel
     private lateinit var binding: FragmentPlayerRankingBinding
-    private lateinit var playerRankingAdapter: PlayerRankingAdapter
+    private val playerRankingAdapter = PlayerRankingAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,23 +39,27 @@ class PlayerRankingFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setMenuFunctionality()
-
-        binding = FragmentPlayerRankingBinding.bind(view)
-        binding.playersRecyclerView.layoutManager = LinearLayoutManager(context)
-        playerRankingAdapter = PlayerRankingAdapter()
-        binding.playersRecyclerView.adapter = playerRankingAdapter
-
+    override fun observeData() {
         compositeDisposable.add(
             viewModel.playerRankedList
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { list ->
-                playerRankingAdapter.repopulate(list)
-            }
+                    playerRankingAdapter.repopulate(list)
+                }
         )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentPlayerRankingBinding.bind(view)
+        setTitle(getString(R.string.player_ranking_title))
+        setRecyclerAdapter()
+        setMenuFunctionality()
+    }
+
+    private fun setRecyclerAdapter() {
+        binding.playersRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.playersRecyclerView.adapter = playerRankingAdapter
     }
 
     private fun setMenuFunctionality() {

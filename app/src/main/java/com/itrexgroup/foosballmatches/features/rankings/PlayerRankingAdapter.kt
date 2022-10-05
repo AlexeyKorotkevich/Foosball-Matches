@@ -25,10 +25,12 @@ class PlayerRankingAdapter : BaseAdapter<Pair<String, ScoreDto>>() {
 class PlayerRankingViewHolder(private val binding: ItemPlayerBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(player: Pair<String, ScoreDto>, rank: Int) {
-        binding.tvPlayerRank.text = rank.toString()
+        binding.tvPlayerRank.text = itemView.context.getString(R.string.player_rank, rank)
         binding.tvPlayerName.text = player.first
-        binding.tvPlayerGames.text = player.second.gamesQuantity.toString()
-        binding.tvPlayerWins.text = player.second.score.toString()
+        binding.tvPlayerGames.text =
+            itemView.context.getString(R.string.player_games, player.second.gamesQuantity)
+        binding.tvPlayerWins.text =
+            itemView.context.getString(R.string.player_wins, player.second.score)
     }
 
     companion object {

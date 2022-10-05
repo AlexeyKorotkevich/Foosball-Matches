@@ -5,5 +5,10 @@
     <string name="vs">VS</string>
     <string name="save">Save</string>
     <string name="ranks">Ranks</string>
-    <string name="sort_by_games">Sort by games</string>
+    <string name="sort_rankings">Sort</string>
+    <string name="player_rank">%1$d.</string>
+    <string name="player_wins">Wins: %1$d</string>
+    <string name="player_games">Games: %1$d</string>
+    <string name="match_list_title">Match list</string>
+    <string name="player_ranking_title">Ranking</string>
 </resources>

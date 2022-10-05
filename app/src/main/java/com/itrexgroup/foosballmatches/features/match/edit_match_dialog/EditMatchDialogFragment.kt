@@ -36,23 +36,18 @@ class EditMatchDialogFragment : BaseDialogFragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding = EditMatchDialogBinding.bind(view)
-        arguments?.let { args ->
-            viewModel.getMatchData(
-                id = args.getString(Constants.ARG_MATCH_ID, ""),
-                playerOneName = args.getString(Constants.ARG_PLAYER_ONE_NAME, ""),
-                playerTwoName = args.getString(Constants.ARG_PLAYER_TWO_NAME, ""),
-                playerOneScore = args.getInt(Constants.ARG_PLAYER_ONE_SCORE, 0),
-                playerTwoScore = args.getInt(Constants.ARG_PLAYER_TWO_SCORE, 0)
-            )
-        }
+    override fun observeData() {
         compositeDisposable.add(
             viewModel.isSaveButtonEnabled.subscribe { enabled ->
                 binding.btSave.isEnabled = enabled
             }
         )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = EditMatchDialogBinding.bind(view)
+        getArgsData()
         setEditTextFieldsFunctionality()
         binding.btSave.setOnClickListener {
             viewModel.updateMatch()
@@ -84,6 +79,18 @@ class EditMatchDialogFragment : BaseDialogFragment() {
                 viewModel.playerTwoScore.onNext(text.toString().toInt())
                 viewModel.checkIsSaveEnabled()
             }
+        }
+    }
+
+    private fun getArgsData() {
+        arguments?.let { args ->
+            viewModel.getMatchData(
+                id = args.getString(Constants.ARG_MATCH_ID, ""),
+                playerOneName = args.getString(Constants.ARG_PLAYER_ONE_NAME, ""),
+                playerTwoName = args.getString(Constants.ARG_PLAYER_TWO_NAME, ""),
+                playerOneScore = args.getInt(Constants.ARG_PLAYER_ONE_SCORE, 0),
+                playerTwoScore = args.getInt(Constants.ARG_PLAYER_TWO_SCORE, 0)
+            )
         }
     }
 

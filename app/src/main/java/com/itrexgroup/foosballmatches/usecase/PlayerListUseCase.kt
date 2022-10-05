@@ -19,19 +19,19 @@ class PlayerListUseCase @Inject constructor(
                 if (match.playerOneName !in playerMap.keys) {
                     playerMap[match.playerOneName] = ScoreDto(gamesQuantity = 1)
                 } else {
-                    playerMap[match.playerOneName]!!.gamesQuantity += 1
+                    playerMap[match.playerOneName]?.let { it.gamesQuantity += 1 }
                 }
                 if (match.playerTwoName !in playerMap.keys) {
                     playerMap[match.playerTwoName] = ScoreDto(gamesQuantity = 1)
                 } else {
-                    playerMap[match.playerTwoName]!!.gamesQuantity += 1
+                    playerMap[match.playerTwoName]?.let { it.gamesQuantity += 1 }
                 }
                 when {
                     match.playerOneScore > match.playerTwoScore -> {
-                        playerMap[match.playerOneName]!!.score += 1
+                        playerMap[match.playerOneName]?.let { it.score += 1 }
                     }
                     match.playerOneScore < match.playerTwoScore -> {
-                        playerMap[match.playerTwoName]!!.score += 1
+                        playerMap[match.playerTwoName]?.let { it.score += 1 }
                     }
                 }
             }
@@ -39,7 +39,7 @@ class PlayerListUseCase @Inject constructor(
         }
 
     val playerRankList: Observable<List<Pair<String, ScoreDto>>> =
-        Observable.combineLatest(rankByScore, playerScoreMap) {byRank, player ->
+        Observable.combineLatest(rankByScore, playerScoreMap) { byRank, player ->
             when (byRank) {
                 true -> return@combineLatest player.toList().sortedBy {
                     it.second.score
@@ -51,6 +51,6 @@ class PlayerListUseCase @Inject constructor(
         }
 
     fun toggleRankSorting() {
-        rankByScore.onNext(rankByScore.value!!)
+        rankByScore.onNext(!rankByScore.value!!)
     }
 }
