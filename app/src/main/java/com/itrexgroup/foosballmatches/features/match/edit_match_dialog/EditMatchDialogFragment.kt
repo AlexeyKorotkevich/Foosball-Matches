@@ -49,10 +49,7 @@ class EditMatchDialogFragment : BaseDialogFragment() {
         binding = EditMatchDialogBinding.bind(view)
         getArgsData()
         setEditTextFieldsFunctionality()
-        binding.btSave.setOnClickListener {
-            viewModel.updateMatch()
-            this.dismiss()
-        }
+        setSaveButtonFunctionality()
     }
 
     private fun setEditTextFieldsFunctionality() {
@@ -79,6 +76,13 @@ class EditMatchDialogFragment : BaseDialogFragment() {
                 viewModel.playerTwoScore.onNext(text.toString().toInt())
                 viewModel.checkIsSaveEnabled()
             }
+        }
+    }
+
+    private fun setSaveButtonFunctionality() {
+        binding.btSave.setOnClickListener {
+            viewModel.updateMatch()
+            this.dismiss()
         }
     }
 
