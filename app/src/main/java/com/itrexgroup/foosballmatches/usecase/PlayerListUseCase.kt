@@ -1,7 +1,7 @@
 package com.itrexgroup.foosballmatches.usecase
 
 import com.itrexgroup.domain.dto.ScoreDto
-import com.itrexgroup.foosballmatches.repository.DatabaseRepository
+import com.itrexgroup.data.repository.DatabaseRepository
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject

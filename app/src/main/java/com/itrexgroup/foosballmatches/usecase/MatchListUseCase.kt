@@ -1,7 +1,7 @@
 package com.itrexgroup.foosballmatches.usecase
 
 import com.itrexgroup.domain.dto.MatchDto
-import com.itrexgroup.foosballmatches.repository.DatabaseRepository
+import com.itrexgroup.data.repository.DatabaseRepository
 import javax.inject.Inject
 
 class MatchListUseCase @Inject constructor(

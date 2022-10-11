@@ -1,4 +1,4 @@
-package com.itrexgroup.foosballmatches.repository
+package com.itrexgroup.data.repository
 
 import com.itrexgroup.data.database.AppDatabase
 import com.itrexgroup.data.ext.transformToMatchDb
