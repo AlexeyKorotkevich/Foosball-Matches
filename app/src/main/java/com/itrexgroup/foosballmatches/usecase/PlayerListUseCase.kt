@@ -41,12 +41,12 @@ class PlayerListUseCase @Inject constructor(
     val playerRankList: Observable<List<Pair<String, ScoreDto>>> =
         Observable.combineLatest(rankByScore, playerScoreMap) { byRank, player ->
             when (byRank) {
-                true -> return@combineLatest player.toList().sortedBy {
+                true -> return@combineLatest player.toList().sortedByDescending {
                     it.second.score
-                }.asReversed()
-                false -> return@combineLatest player.toList().sortedBy {
+                }
+                false -> return@combineLatest player.toList().sortedByDescending {
                     it.second.gamesQuantity
-                }.asReversed()
+                }
             }
         }
 
