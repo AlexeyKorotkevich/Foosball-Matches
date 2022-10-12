@@ -6,6 +6,7 @@ import com.itrexgroup.foosballmatches.di.AppComponent
 import com.itrexgroup.foosballmatches.di.DaggerAppComponent
 
 class FoosballApplication : Application() {
+
     lateinit var appComponent: AppComponent
 
     override fun onCreate() {

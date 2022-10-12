@@ -9,6 +9,7 @@ import com.itrexgroup.foosballmatches.base.BaseAdapter
 import com.itrexgroup.foosballmatches.databinding.ItemPlayerBinding
 
 class PlayerRankingAdapter : BaseAdapter<Pair<String, ScoreDto>>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlayerRankingViewHolder.create(parent)
     }

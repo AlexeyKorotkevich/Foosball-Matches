@@ -7,6 +7,7 @@ import io.reactivex.Observable
 
 @Dao
 interface MatchDao {
+
     @Query("SELECT * FROM MatchDb")
     fun getAllMatches(): Observable<List<MatchDb>>
 

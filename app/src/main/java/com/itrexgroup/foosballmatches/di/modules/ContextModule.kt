@@ -8,6 +8,7 @@ import javax.inject.Singleton
 
 @Module
 object ContextModule {
+
     @Provides
     @Singleton
     @JvmStatic

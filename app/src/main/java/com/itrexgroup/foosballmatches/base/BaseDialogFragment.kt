@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseDialogFragment : DialogFragment() {
+
     protected val compositeDisposable = CompositeDisposable()
     protected abstract fun observeData()
 

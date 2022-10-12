@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment : Fragment() {
+
     protected val compositeDisposable = CompositeDisposable()
     protected var activity: BaseActivity? = null
     protected abstract fun observeData()

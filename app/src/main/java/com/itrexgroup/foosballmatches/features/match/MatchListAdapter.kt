@@ -9,6 +9,7 @@ import com.itrexgroup.foosballmatches.base.BaseAdapter
 import com.itrexgroup.foosballmatches.databinding.ItemMatchBinding
 
 class MatchListAdapter : BaseAdapter<MatchDto>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MatchViewHolder.create(parent)
     }

@@ -12,6 +12,7 @@ import javax.inject.Inject
 class DatabaseRepository @Inject constructor(
     private val database: AppDatabase
 ) {
+
     fun getMatchList(): Observable<List<MatchDto>> {
         return database.matchDao().getAllMatches().map { it.transformToMatchDto() }
     }

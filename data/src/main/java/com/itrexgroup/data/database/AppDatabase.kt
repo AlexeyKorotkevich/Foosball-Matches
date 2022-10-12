@@ -12,5 +12,6 @@ import com.itrexgroup.data.database.models.MatchDb
     version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun matchDao(): MatchDao
 }
