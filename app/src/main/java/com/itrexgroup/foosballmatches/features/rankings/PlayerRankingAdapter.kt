@@ -26,11 +26,11 @@ class PlayerRankingAdapter : BaseAdapter<Pair<String, ScoreDto>>() {
 class PlayerRankingViewHolder(private val binding: ItemPlayerBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(player: Pair<String, ScoreDto>, rank: Int) {
-        binding.tvPlayerRank.text = itemView.context.getString(R.string.player_rank, rank)
-        binding.tvPlayerName.text = player.first
-        binding.tvPlayerGames.text =
+        binding.playerRank.text = itemView.context.getString(R.string.player_rank, rank)
+        binding.playerName.text = player.first
+        binding.playerGames.text =
             itemView.context.getString(R.string.player_games, player.second.gamesQuantity)
-        binding.tvPlayerWins.text =
+        binding.playerWins.text =
             itemView.context.getString(R.string.player_wins, player.second.score)
     }
 

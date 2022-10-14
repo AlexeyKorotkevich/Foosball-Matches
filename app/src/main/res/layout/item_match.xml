@@ -12,7 +12,7 @@
         android:layout_marginVertical="@dimen/size_16dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_player_one"
+            android:id="@+id/player_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_20sp"
@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_player_two"
+            android:id="@+id/player_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_20sp"
@@ -39,14 +39,14 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_score_one"
+                android:id="@+id/score_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="@dimen/text_size_20sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_score_separator"
+                android:id="@+id/score_separator"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="@dimen/size_12dp"
@@ -54,7 +54,7 @@
                 android:textSize="@dimen/text_size_20sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_score_two"
+                android:id="@+id/score_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

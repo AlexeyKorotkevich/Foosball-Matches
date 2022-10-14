@@ -31,10 +31,10 @@ class MatchListAdapter : BaseAdapter<MatchDto>() {
 class MatchViewHolder(private val binding: ItemMatchBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(match: MatchDto) {
-        binding.tvPlayerOne.text = match.playerOneName
-        binding.tvPlayerTwo.text = match.playerTwoName
-        binding.tvScoreOne.text = match.playerOneScore.toString()
-        binding.tvScoreTwo.text = match.playerTwoScore.toString()
+        binding.playerOne.text = match.playerOneName
+        binding.playerTwo.text = match.playerTwoName
+        binding.scoreOne.text = match.playerOneScore.toString()
+        binding.scoreTwo.text = match.playerTwoScore.toString()
     }
 
     companion object {

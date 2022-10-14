@@ -28,6 +28,24 @@ class EditMatchViewModel @Inject constructor(
         }
     }
 
+    fun onPlayerOneName(name: String) {
+        playerOneName.onNext(name)
+        checkIsSaveEnabled()
+    }
+
+    fun onPlayerTwoName(name: String) {
+        playerTwoName.onNext(name)
+        checkIsSaveEnabled()
+    }
+
+    fun onPlayerOneScore(score: Int) {
+        playerOneScore.onNext(score)
+    }
+
+    fun onPlayerTwoScore(score: Int) {
+        playerTwoScore.onNext(score)
+    }
+
     fun getMatchData(
         id: String,
         playerOneName: String,

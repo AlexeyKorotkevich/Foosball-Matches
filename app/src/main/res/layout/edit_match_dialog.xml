@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_player_one_name"
+        android:id="@+id/player_one_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/player_one_name"
@@ -18,7 +18,7 @@
         tools:text="Name" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_player_one_score"
+        android:id="@+id/player_one_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -28,11 +28,11 @@
         android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_player_one_name"
+        app:layout_constraintTop_toBottomOf="@id/player_one_name"
         tools:text="2" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_score_separator"
+        android:id="@+id/score_separator"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginVertical="@dimen/size_24dp"
@@ -40,10 +40,10 @@
         android:textSize="@dimen/text_size_20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_player_one_score" />
+        app:layout_constraintTop_toBottomOf="@id/player_one_score" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_player_two_score"
+        android:id="@+id/player_two_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -53,11 +53,11 @@
         android:maxLength="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_score_separator"
+        app:layout_constraintTop_toBottomOf="@id/score_separator"
         tools:text="2" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_player_two_name"
+        android:id="@+id/player_two_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/player_one_name"
@@ -65,16 +65,16 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_player_two_score"
+        app:layout_constraintTop_toBottomOf="@+id/player_two_score"
         tools:text="Name" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_save"
+        android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_player_two_name" />
+        app:layout_constraintTop_toBottomOf="@id/player_two_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

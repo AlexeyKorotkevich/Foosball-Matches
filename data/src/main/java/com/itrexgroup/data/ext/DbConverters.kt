@@ -18,3 +18,13 @@ fun List<MatchDb>.transformToMatchDto(): List<MatchDto> {
     }
     return result
 }
+
+fun MatchDto.transformToMatchDb(): MatchDb {
+    return MatchDb(
+        id = this.id,
+        playerOneName = this.playerOneName,
+        playerOneScore = this.playerOneScore,
+        playerTwoName = this.playerTwoName,
+        playerTwoScore = this.playerTwoScore
+    )
+}

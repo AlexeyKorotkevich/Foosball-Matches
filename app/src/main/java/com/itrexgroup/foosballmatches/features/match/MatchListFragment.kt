@@ -103,7 +103,7 @@ class MatchListFragment : BaseFragment() {
     }
 
     private fun setFloatingButtonFunctionality() {
-        binding.fbAddMatch.setOnClickListener {
+        binding.addMatchButton.setOnClickListener {
             val editMatchDialog = EditMatchDialogFragment.getInstance()
             editMatchDialog.show(
                 requireActivity().supportFragmentManager,

@@ -51,6 +51,7 @@ class PlayerListUseCase @Inject constructor(
         }
 
     fun toggleRankSorting() {
+        //scan
         rankByScore.value?.let {
             rankByScore.onNext(!it)
         }

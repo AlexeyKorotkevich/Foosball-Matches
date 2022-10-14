@@ -39,7 +39,7 @@ class EditMatchDialogFragment : BaseDialogFragment() {
     override fun observeData() {
         compositeDisposable.add(
             viewModel.isSaveButtonEnabled.subscribe { enabled ->
-                binding.btSave.isEnabled = enabled
+                binding.saveButton.isEnabled = enabled
             }
         )
     }
@@ -53,34 +53,30 @@ class EditMatchDialogFragment : BaseDialogFragment() {
     }
 
     private fun setEditTextFieldsFunctionality() {
-        binding.etPlayerOneName.setText(viewModel.playerOneName.value)
-        binding.etPlayerOneName.doOnTextChanged { text, _, _, _ ->
-            viewModel.playerOneName.onNext(text.toString())
-            viewModel.checkIsSaveEnabled()
+        binding.playerOneName.setText(viewModel.playerOneName.value)
+        binding.playerOneName.doOnTextChanged { text, _, _, _ ->
+            viewModel.onPlayerOneName(text.toString())
         }
-        binding.etPlayerTwoName.setText(viewModel.playerTwoName.value)
-        binding.etPlayerTwoName.doOnTextChanged { text, _, _, _ ->
-            viewModel.playerTwoName.onNext(text.toString())
-            viewModel.checkIsSaveEnabled()
+        binding.playerTwoName.setText(viewModel.playerTwoName.value)
+        binding.playerTwoName.doOnTextChanged { text, _, _, _ ->
+            viewModel.onPlayerTwoName(text.toString())
         }
-        binding.etPlayerOneScore.setText(viewModel.playerOneScore.value.toString())
-        binding.etPlayerOneScore.doOnTextChanged { text, _, _, _ ->
+        binding.playerOneScore.setText(viewModel.playerOneScore.value.toString())
+        binding.playerOneScore.doOnTextChanged { text, _, _, _ ->
             if (!text.isNullOrEmpty()) {
-                viewModel.playerOneScore.onNext(text.toString().toInt())
-                viewModel.checkIsSaveEnabled()
+                viewModel.onPlayerOneScore(text.toString().toInt())
             }
         }
-        binding.etPlayerTwoScore.setText(viewModel.playerTwoScore.value.toString())
-        binding.etPlayerTwoScore.doOnTextChanged { text, _, _, _ ->
+        binding.playerTwoScore.setText(viewModel.playerTwoScore.value.toString())
+        binding.playerTwoScore.doOnTextChanged { text, _, _, _ ->
             if (!text.isNullOrEmpty()) {
-                viewModel.playerTwoScore.onNext(text.toString().toInt())
-                viewModel.checkIsSaveEnabled()
+                viewModel.onPlayerTwoScore(text.toString().toInt())
             }
         }
     }
 
     private fun setSaveButtonFunctionality() {
-        binding.btSave.setOnClickListener {
+        binding.saveButton.setOnClickListener {
             viewModel.updateMatch()
             this.dismiss()
         }

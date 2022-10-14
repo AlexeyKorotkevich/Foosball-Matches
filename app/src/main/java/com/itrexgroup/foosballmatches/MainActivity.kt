@@ -2,7 +2,7 @@ package com.itrexgroup.foosballmatches
 
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.itrexgroup.foosballmatches.base.BaseActivity
 import com.itrexgroup.foosballmatches.databinding.MainActivityBinding
 
@@ -15,6 +15,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navController = Navigation.findNavController(this, R.id.nav_host)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host) as NavHostFragment
+        navController = navHostFragment.navController
     }
 }

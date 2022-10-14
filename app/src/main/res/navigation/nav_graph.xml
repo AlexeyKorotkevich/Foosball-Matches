@@ -9,14 +9,17 @@
         android:id="@+id/matchListFragment"
         android:name="com.itrexgroup.foosballmatches.features.match.MatchListFragment"
         android:label="fragment_match_list"
-        tools:layout="@layout/fragment_match_list" >
+        tools:layout="@layout/fragment_match_list">
         <action
             android:id="@+id/action_matchListFragment_to_playerRankingFragment"
             app:destination="@id/playerRankingFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/playerRankingFragment"
         android:name="com.itrexgroup.foosballmatches.features.rankings.PlayerRankingFragment"
         android:label="fragment_player_ranking"
         tools:layout="@layout/fragment_player_ranking" />
+
+
 </navigation>

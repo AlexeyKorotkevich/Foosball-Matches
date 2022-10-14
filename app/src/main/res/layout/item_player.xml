@@ -12,7 +12,7 @@
         android:layout_marginVertical="@dimen/size_16dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_player_rank"
+            android:id="@+id/player_rank"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="@dimen/text_size_20sp"
@@ -21,17 +21,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_player_name"
+            android:id="@+id/player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_16dp"
             android:textSize="@dimen/text_size_20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_player_rank"
+            app:layout_constraintStart_toEndOf="@+id/player_rank"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_player_games"
+            android:id="@+id/player_games"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="@dimen/text_size_20sp"
@@ -40,12 +40,12 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_player_wins"
+            android:id="@+id/player_wins"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/size_16dp"
             android:textSize="@dimen/text_size_20sp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_player_games"
+            app:layout_constraintEnd_toStartOf="@+id/player_games"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
