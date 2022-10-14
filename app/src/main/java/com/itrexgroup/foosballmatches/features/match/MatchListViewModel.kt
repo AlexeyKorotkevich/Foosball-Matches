@@ -16,6 +16,9 @@ class MatchListViewModel @Inject constructor(
 
     fun deleteMatch(id: String) {
         matchListUseCase.deleteMatch(id)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe()
     }
 
     init {

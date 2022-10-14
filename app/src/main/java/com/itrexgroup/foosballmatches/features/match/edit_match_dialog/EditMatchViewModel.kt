@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import com.itrexgroup.domain.dto.MatchDto
 import com.itrexgroup.foosballmatches.base.BaseViewModel
 import com.itrexgroup.foosballmatches.usecase.MatchListUseCase
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
@@ -66,6 +68,8 @@ class EditMatchViewModel @Inject constructor(
                 playerTwoName.value!!,
                 playerTwoScore.value!!
             )
-        )
+        ).observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe()
     }
 }
