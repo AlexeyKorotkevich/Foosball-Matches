@@ -1,13 +1,12 @@
-package com.itrexgroup.foosballmatches.usecase
+package com.itrexgroup.domain.usecase
 
 import com.itrexgroup.domain.dto.ScoreDto
-import com.itrexgroup.data.repository.DatabaseRepositoryImpl
+import com.itrexgroup.domain.repository.DatabaseRepository
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
-import javax.inject.Inject
 
-class PlayerListUseCase @Inject constructor(
-    databaseRepository: DatabaseRepositoryImpl
+class PlayerListUseCase(
+    databaseRepository: DatabaseRepository
 ) {
 
     private val rankByScore = BehaviorSubject.createDefault(true)

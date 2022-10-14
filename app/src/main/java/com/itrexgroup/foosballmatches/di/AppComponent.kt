@@ -1,9 +1,7 @@
 package com.itrexgroup.foosballmatches.di
 
 import android.app.Application
-import com.itrexgroup.foosballmatches.di.modules.ContextModule
-import com.itrexgroup.foosballmatches.di.modules.DatabaseModule
-import com.itrexgroup.foosballmatches.di.modules.ViewModelModule
+import com.itrexgroup.foosballmatches.di.modules.*
 import com.itrexgroup.foosballmatches.features.match.MatchListFragment
 import com.itrexgroup.foosballmatches.features.match.edit_match_dialog.EditMatchDialogFragment
 import com.itrexgroup.foosballmatches.features.rankings.PlayerRankingFragment
@@ -16,7 +14,9 @@ import javax.inject.Singleton
     modules = [
         ContextModule::class,
         DatabaseModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        RepositoryModule::class,
+        UseCaseModule::class
     ]
 )
 interface AppComponent {

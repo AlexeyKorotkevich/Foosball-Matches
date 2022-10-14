@@ -7,9 +7,8 @@ import com.itrexgroup.domain.dto.MatchDto
 import com.itrexgroup.domain.repository.DatabaseRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
-import javax.inject.Inject
 
-class DatabaseRepositoryImpl @Inject constructor(
+class DatabaseRepositoryImpl(
     private val database: AppDatabase
 ) : DatabaseRepository {
 

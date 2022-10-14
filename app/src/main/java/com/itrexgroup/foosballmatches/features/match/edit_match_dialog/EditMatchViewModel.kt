@@ -3,7 +3,7 @@ package com.itrexgroup.foosballmatches.features.match.edit_match_dialog
 import androidx.lifecycle.MutableLiveData
 import com.itrexgroup.domain.dto.MatchDto
 import com.itrexgroup.foosballmatches.base.BaseViewModel
-import com.itrexgroup.foosballmatches.usecase.MatchListUseCase
+import com.itrexgroup.domain.usecase.MatchListUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject

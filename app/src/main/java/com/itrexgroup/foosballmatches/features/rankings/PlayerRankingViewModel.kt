@@ -3,7 +3,7 @@ package com.itrexgroup.foosballmatches.features.rankings
 import androidx.lifecycle.MutableLiveData
 import com.itrexgroup.domain.dto.ScoreDto
 import com.itrexgroup.foosballmatches.base.BaseViewModel
-import com.itrexgroup.foosballmatches.usecase.PlayerListUseCase
+import com.itrexgroup.domain.usecase.PlayerListUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
