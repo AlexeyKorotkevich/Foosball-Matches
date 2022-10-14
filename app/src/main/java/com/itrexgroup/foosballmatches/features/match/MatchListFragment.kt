@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itrexgroup.foosballmatches.R
@@ -14,22 +13,19 @@ import com.itrexgroup.foosballmatches.appComponent
 import com.itrexgroup.foosballmatches.base.BaseFragment
 import com.itrexgroup.foosballmatches.databinding.FragmentMatchListBinding
 import com.itrexgroup.foosballmatches.features.match.edit_match_dialog.EditMatchDialogFragment
-import com.itrexgroup.foosballmatches.utils.injectViewModel
 import javax.inject.Inject
 
 class MatchListFragment : BaseFragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModel: MatchListViewModel
 
-    private lateinit var viewModel: MatchListViewModel
     private lateinit var binding: FragmentMatchListBinding
     private lateinit var matchListAdapter: MatchListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
-        viewModel = requireActivity().injectViewModel(viewModelFactory)
     }
 
     override fun onCreateView(

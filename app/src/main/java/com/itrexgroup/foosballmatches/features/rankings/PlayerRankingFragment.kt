@@ -5,29 +5,24 @@ import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itrexgroup.foosballmatches.R
 import com.itrexgroup.foosballmatches.appComponent
 import com.itrexgroup.foosballmatches.base.BaseFragment
 import com.itrexgroup.foosballmatches.databinding.FragmentPlayerRankingBinding
-import com.itrexgroup.foosballmatches.utils.injectViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class PlayerRankingFragment : BaseFragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModel: PlayerRankingViewModel
 
-    private lateinit var viewModel: PlayerRankingViewModel
     private lateinit var binding: FragmentPlayerRankingBinding
     private val playerRankingAdapter = PlayerRankingAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
-        viewModel = requireActivity().injectViewModel(viewModelFactory)
     }
 
     override fun onCreateView(
