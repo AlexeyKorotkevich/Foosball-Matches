@@ -40,13 +40,9 @@ class PlayerRankingFragment : BaseFragment() {
     }
 
     override fun observeData() {
-        compositeDisposable.add(
-            viewModel.playerRankedList
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { list ->
-                    playerRankingAdapter.repopulate(list)
-                }
-        )
+        viewModel.playerRankedList.observe(this) { list ->
+            playerRankingAdapter.repopulate(list)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

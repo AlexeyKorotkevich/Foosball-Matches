@@ -1,17 +1,18 @@
 package com.itrexgroup.foosballmatches.features.rankings
 
+import androidx.lifecycle.MutableLiveData
 import com.itrexgroup.domain.dto.ScoreDto
 import com.itrexgroup.foosballmatches.base.BaseViewModel
 import com.itrexgroup.foosballmatches.usecase.PlayerListUseCase
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
 class PlayerRankingViewModel @Inject constructor(
     private val playerListUseCase: PlayerListUseCase
 ) : BaseViewModel() {
 
-    val playerRankedList = BehaviorSubject.createDefault<List<Pair<String, ScoreDto>>>(emptyList())
+    val playerRankedList = MutableLiveData<List<Pair<String, ScoreDto>>>()
 
     fun toggleRankSorting() {
         playerListUseCase.toggleRankSorting()
@@ -19,10 +20,10 @@ class PlayerRankingViewModel @Inject constructor(
 
     init {
         playerListUseCase.playerRankList
-            .observeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe { list ->
-                playerRankedList.onNext(list)
+                playerRankedList.value = list
             }.also { compositeDisposable.add(it) }
     }
 }

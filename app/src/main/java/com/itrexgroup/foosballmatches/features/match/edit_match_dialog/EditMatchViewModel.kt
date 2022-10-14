@@ -1,5 +1,6 @@
 package com.itrexgroup.foosballmatches.features.match.edit_match_dialog
 
+import androidx.lifecycle.MutableLiveData
 import com.itrexgroup.domain.dto.MatchDto
 import com.itrexgroup.foosballmatches.base.BaseViewModel
 import com.itrexgroup.foosballmatches.usecase.MatchListUseCase
@@ -16,16 +17,11 @@ class EditMatchViewModel @Inject constructor(
     val playerOneScore = BehaviorSubject.createDefault(0)
     val playerTwoScore = BehaviorSubject.createDefault(0)
 
-    val isSaveButtonEnabled = BehaviorSubject.createDefault(false)
+    val isSaveButtonEnabled = MutableLiveData<Boolean>()
 
-    fun checkIsSaveEnabled() {
-        if (
+    private fun checkIsSaveEnabled() {
+        isSaveButtonEnabled.value =
             !playerOneName.value.isNullOrEmpty() && !playerTwoName.value.isNullOrEmpty()
-        ) {
-            isSaveButtonEnabled.onNext(true)
-        } else {
-            isSaveButtonEnabled.onNext(false)
-        }
     }
 
     fun onPlayerOneName(name: String) {

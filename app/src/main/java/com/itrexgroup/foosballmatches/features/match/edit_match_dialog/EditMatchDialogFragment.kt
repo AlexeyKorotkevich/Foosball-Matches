@@ -37,11 +37,9 @@ class EditMatchDialogFragment : BaseDialogFragment() {
     }
 
     override fun observeData() {
-        compositeDisposable.add(
-            viewModel.isSaveButtonEnabled.subscribe { enabled ->
-                binding.saveButton.isEnabled = enabled
-            }
-        )
+        viewModel.isSaveButtonEnabled.observe(this) { enabled ->
+            binding.saveButton.isEnabled = enabled
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

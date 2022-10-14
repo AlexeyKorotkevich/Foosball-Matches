@@ -42,11 +42,9 @@ class MatchListFragment : BaseFragment() {
     }
 
     override fun observeData() {
-        compositeDisposable.add(
-            viewModel.matchList.subscribe { list ->
-                matchListAdapter.repopulate(list)
-            }
-        )
+        viewModel.matchList.observe(this) { list ->
+            matchListAdapter.repopulate(list)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
