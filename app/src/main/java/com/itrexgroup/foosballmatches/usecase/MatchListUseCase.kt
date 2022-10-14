@@ -1,11 +1,11 @@
 package com.itrexgroup.foosballmatches.usecase
 
 import com.itrexgroup.domain.dto.MatchDto
-import com.itrexgroup.data.repository.DatabaseRepository
+import com.itrexgroup.data.repository.DatabaseRepositoryImpl
 import javax.inject.Inject
 
 class MatchListUseCase @Inject constructor(
-    private val databaseRepository: DatabaseRepository
+    private val databaseRepository: DatabaseRepositoryImpl
 ) {
 
     val matchList = databaseRepository.getMatchList()
