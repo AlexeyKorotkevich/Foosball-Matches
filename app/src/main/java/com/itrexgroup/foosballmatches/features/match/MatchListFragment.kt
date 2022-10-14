@@ -24,7 +24,7 @@ class MatchListFragment : BaseFragment() {
 
     private lateinit var viewModel: MatchListViewModel
     private lateinit var binding: FragmentMatchListBinding
-    private val matchListAdapter = MatchListAdapter()
+    private lateinit var matchListAdapter: MatchListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,24 +60,26 @@ class MatchListFragment : BaseFragment() {
 
     private fun setRecyclerAdapter() {
         binding.matchRecyclerView.layoutManager = LinearLayoutManager(context)
-        matchListAdapter.setItemClick { item ->
-            val editMatchDialog = EditMatchDialogFragment.getInstance(
-                matchId = item.id,
-                playerOneName = item.playerOneName,
-                playerTwoName = item.playerTwoName,
-                playerOneScore = item.playerOneScore,
-                playerTwoScore = item.playerTwoScore
-            )
-            editMatchDialog.show(
-                requireActivity().supportFragmentManager,
-                EditMatchDialogFragment.TAG
-            )
-        }
-        matchListAdapter.setLongClick { item ->
-            showDeleteMatchAlertDialog(onDeleteDialog = {
-                viewModel.deleteMatch(item.id)
-            })
-        }
+        matchListAdapter = MatchListAdapter(
+            onItemClickListener = { item ->
+                val editMatchDialog = EditMatchDialogFragment.getInstance(
+                    matchId = item.id,
+                    playerOneName = item.playerOneName,
+                    playerTwoName = item.playerTwoName,
+                    playerOneScore = item.playerOneScore,
+                    playerTwoScore = item.playerTwoScore
+                )
+                editMatchDialog.show(
+                    requireActivity().supportFragmentManager,
+                    EditMatchDialogFragment.TAG
+                )
+            },
+            onItemLongClickListener = { item ->
+                showDeleteMatchAlertDialog(onDeleteDialog = {
+                    viewModel.deleteMatch(item.id)
+                })
+            }
+        )
         binding.matchRecyclerView.adapter = matchListAdapter
     }
 
