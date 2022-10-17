@@ -10,6 +10,13 @@ class PlayerListUseCase(
 ) {
 
     private val rankByScore = BehaviorSubject.createDefault(true)
+    private val rankByScoreScan = rankByScore.scan { prevValue, _ ->
+        !prevValue
+    }
+
+    fun toggleRankSorting() {
+        rankByScore.onNext(true)
+    }
 
     private val playerScoreMap = databaseRepository.getMatchList()
         .map { matchList ->
@@ -38,7 +45,7 @@ class PlayerListUseCase(
         }
 
     val playerRankList: Observable<List<Pair<String, ScoreDto>>> =
-        Observable.combineLatest(rankByScore, playerScoreMap) { byRank, player ->
+        Observable.combineLatest(rankByScoreScan, playerScoreMap) { byRank, player ->
             when (byRank) {
                 true -> return@combineLatest player.toList().sortedByDescending {
                     it.second.score
@@ -48,8 +55,4 @@ class PlayerListUseCase(
                 }
             }
         }
-
-    fun toggleRankSorting() {
-        rankByScore.onNext(!rankByScore.value!!)
-    }
 }
