@@ -50,9 +50,6 @@ class PlayerListUseCase(
         }
 
     fun toggleRankSorting() {
-        //scan
-        rankByScore.value?.let {
-            rankByScore.onNext(!it)
-        }
+        rankByScore.onNext(!rankByScore.value!!)
     }
 }

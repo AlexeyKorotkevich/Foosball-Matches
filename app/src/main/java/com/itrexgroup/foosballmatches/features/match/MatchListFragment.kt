@@ -38,7 +38,7 @@ class MatchListFragment : BaseFragment() {
     }
 
     override fun observeData() {
-        viewModel.matchList.observe(this) { list ->
+        viewModel.matchList.observe(viewLifecycleOwner) { list ->
             matchListAdapter.repopulate(list)
         }
     }

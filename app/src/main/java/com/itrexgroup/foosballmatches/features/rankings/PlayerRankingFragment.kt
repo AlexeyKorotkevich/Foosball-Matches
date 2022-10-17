@@ -35,7 +35,7 @@ class PlayerRankingFragment : BaseFragment() {
     }
 
     override fun observeData() {
-        viewModel.playerRankedList.observe(this) { list ->
+        viewModel.playerRankedList.observe(viewLifecycleOwner) { list ->
             playerRankingAdapter.repopulate(list)
         }
     }

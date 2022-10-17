@@ -37,7 +37,7 @@ class EditMatchDialogFragment : BaseDialogFragment() {
     }
 
     override fun observeData() {
-        viewModel.isSaveButtonEnabled.observe(this) { enabled ->
+        viewModel.isSaveButtonEnabled.observe(viewLifecycleOwner) { enabled ->
             binding.saveButton.isEnabled = enabled
         }
     }
