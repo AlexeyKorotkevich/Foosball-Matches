@@ -5,26 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.ViewModelProvider
 import com.itrexgroup.foosballmatches.appComponent
 import com.itrexgroup.foosballmatches.base.BaseDialogFragment
 import com.itrexgroup.foosballmatches.databinding.EditMatchDialogBinding
 import com.itrexgroup.foosballmatches.utils.Constants
-import com.itrexgroup.foosballmatches.utils.injectViewModel
 import javax.inject.Inject
 
 class EditMatchDialogFragment : BaseDialogFragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModel: EditMatchViewModel
 
-    private lateinit var viewModel: EditMatchViewModel
     private lateinit var binding: EditMatchDialogBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
-        viewModel = requireActivity().injectViewModel(viewModelFactory)
     }
 
     override fun onCreateView(
