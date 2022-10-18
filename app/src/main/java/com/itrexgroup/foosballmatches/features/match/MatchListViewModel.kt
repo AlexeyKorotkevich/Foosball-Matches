@@ -1,5 +1,6 @@
 package com.itrexgroup.foosballmatches.features.match
 
+import android.util.Log
 import com.itrexgroup.domain.usecase.MatchListUseCase
 import com.itrexgroup.foosballmatches.base.BaseViewModel
 import com.itrexgroup.foosballmatches.utils.toLiveData
@@ -17,6 +18,8 @@ class MatchListViewModel @Inject constructor(
         matchListUseCase.deleteMatch(id)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe()
+            .subscribe({},
+                { throwable -> Log.d("DeleteMatchError", throwable.message ?: "") })
+            .also { compositeDisposable.add(it) }
     }
 }

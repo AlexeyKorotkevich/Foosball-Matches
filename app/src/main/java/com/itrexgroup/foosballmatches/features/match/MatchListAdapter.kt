@@ -9,8 +9,8 @@ import com.itrexgroup.foosballmatches.base.BaseAdapter
 import com.itrexgroup.foosballmatches.databinding.ItemMatchBinding
 
 class MatchListAdapter(
-    private val onItemClickListener: ((MatchDto) -> Unit?)? = null,
-    private val onItemLongClickListener: ((MatchDto) -> Unit?)? = null
+    private val onItemClickListener: (MatchDto) -> Unit,
+    private val onItemLongClickListener: (MatchDto) -> Unit
 ) : BaseAdapter<MatchDto>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -21,9 +21,9 @@ class MatchListAdapter(
         if (holder is MatchViewHolder) {
             dataList[position].apply {
                 holder.bind(this)
-                holder.itemView.setOnClickListener { onItemClickListener?.invoke(this) }
+                holder.itemView.setOnClickListener { onItemClickListener.invoke(this) }
                 holder.itemView.setOnLongClickListener {
-                    onItemLongClickListener?.invoke(this)
+                    onItemLongClickListener.invoke(this)
                     return@setOnLongClickListener true
                 }
             }

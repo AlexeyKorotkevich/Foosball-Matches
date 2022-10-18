@@ -1,9 +1,10 @@
 package com.itrexgroup.foosballmatches.features.match.edit_match_dialog
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.itrexgroup.domain.dto.MatchDto
-import com.itrexgroup.foosballmatches.base.BaseViewModel
 import com.itrexgroup.domain.usecase.MatchListUseCase
+import com.itrexgroup.foosballmatches.base.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
@@ -68,8 +69,11 @@ class EditMatchViewModel @Inject constructor(
                 playerTwoName.value!!,
                 playerTwoScore.value!!
             )
-        ).observeOn(AndroidSchedulers.mainThread())
+        )
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe()
+            .subscribe({},
+                { throwable -> Log.d("UpdateMatchError", throwable.message ?: "") })
+            .also { compositeDisposable.add(it) }
     }
 }

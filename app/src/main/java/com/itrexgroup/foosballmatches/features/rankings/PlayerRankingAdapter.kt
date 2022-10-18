@@ -3,12 +3,12 @@ package com.itrexgroup.foosballmatches.features.rankings
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.itrexgroup.domain.dto.ScoreDto
+import com.itrexgroup.domain.dto.PlayerDto
 import com.itrexgroup.foosballmatches.R
 import com.itrexgroup.foosballmatches.base.BaseAdapter
 import com.itrexgroup.foosballmatches.databinding.ItemPlayerBinding
 
-class PlayerRankingAdapter : BaseAdapter<Pair<String, ScoreDto>>() {
+class PlayerRankingAdapter : BaseAdapter<PlayerDto>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlayerRankingViewHolder.create(parent)
@@ -25,13 +25,13 @@ class PlayerRankingAdapter : BaseAdapter<Pair<String, ScoreDto>>() {
 
 class PlayerRankingViewHolder(private val binding: ItemPlayerBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(player: Pair<String, ScoreDto>, rank: Int) {
+    fun bind(player: PlayerDto, rank: Int) {
         binding.playerRank.text = itemView.context.getString(R.string.player_rank, rank)
-        binding.playerName.text = player.first
+        binding.playerName.text = player.name
         binding.playerGames.text =
-            itemView.context.getString(R.string.player_games, player.second.gamesQuantity)
+            itemView.context.getString(R.string.player_games, player.score.gamesQuantity)
         binding.playerWins.text =
-            itemView.context.getString(R.string.player_wins, player.second.score)
+            itemView.context.getString(R.string.player_wins, player.score.wins)
     }
 
     companion object {

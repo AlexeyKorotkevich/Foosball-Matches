@@ -91,7 +91,6 @@ class EditMatchDialogFragment : BaseDialogFragment() {
     companion object {
         const val TAG = "EditMatchDialogFragment"
 
-        @JvmStatic
         fun getInstance(
             matchId: String = System.currentTimeMillis().toString(),
             playerOneName: String? = null,
