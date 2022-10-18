@@ -18,8 +18,8 @@ class MatchListViewModel @Inject constructor(
         matchListUseCase.deleteMatch(id)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe({},
-                { throwable -> Log.d("DeleteMatchError", throwable.message ?: "") })
+            .doOnError { throwable -> Log.d("DeleteMatchError", throwable.message ?: "") }
+            .subscribe()
             .also { compositeDisposable.add(it) }
     }
 }

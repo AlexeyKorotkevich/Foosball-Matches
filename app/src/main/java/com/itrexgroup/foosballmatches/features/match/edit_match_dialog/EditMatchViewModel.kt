@@ -72,8 +72,8 @@ class EditMatchViewModel @Inject constructor(
         )
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe({},
-                { throwable -> Log.d("UpdateMatchError", throwable.message ?: "") })
+            .doOnError { throwable -> Log.d("UpdateMatchError", throwable.message ?: "") }
+            .subscribe()
             .also { compositeDisposable.add(it) }
     }
 }
